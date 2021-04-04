@@ -1,0 +1,54 @@
+﻿<Window x:Class="Restaurant.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RestaurantApp"
+        mc:Ignorable="d"
+        Title="Restaurant Control" Height="450" Width="800" WindowStyle="ToolWindow" MinWidth="800" MinHeight="450" MaxWidth="800" MaxHeight="450" Background="Black">
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14"></Setter>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="16"></Setter>
+        </Style>
+    </Window.Resources>
+    <Grid Background="#FF232323">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="0.8*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <ListBox x:Name="listBoxStaff" Grid.Column="0" ItemsSource="{Binding Staffs}" SelectedItem="{Binding SelectedStaff}" Margin="0,57,0,0" OpacityMask="#FF035FFF" Background="#FF232323" BorderBrush="#FF232323" Foreground="#FFEAEAEA">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Path=Name}"></TextBlock>
+                        <TextBlock Text="{Binding Path=Surname}"></TextBlock>
+                        <TextBlock Text="{Binding Path=Salary}"></TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <StackPanel Grid.Column="1" DataContext="{Binding SelectedStaff}" Background="#FF232323">
+            <Label x:Name="labelId" Visibility="Hidden" Content="{Binding Id, UpdateSourceTrigger=PropertyChanged}"></Label>
+            <TextBlock FontSize="20" Text="Сотрудник" Foreground="White"></TextBlock>
+            <TextBlock FontSize="17" Text="Имя" Foreground="White"></TextBlock>
+            <TextBox x:Name="textBoxName" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" SelectionBrush="#FF035FFF"></TextBox>
+            <TextBlock FontSize="17" Text="Фамилия" Foreground="White"></TextBlock>
+            <TextBox x:Name="textBoxSurname" Text="{Binding Surname, UpdateSourceTrigger=PropertyChanged}" SelectionBrush="#FF035FFF"></TextBox>
+            <TextBlock FontSize="17" Text="Зарплата" Foreground="White"></TextBlock>
+            <TextBox x:Name="textBoxSalary" Text="{Binding Salary, UpdateSourceTrigger=PropertyChanged}" SelectionBrush="#FF035FFF"></TextBox>
+            <Button x:Name="buttonSaveChange" Content="Сохранить изменения" HorizontalAlignment="Left" Height="25" Margin="200,5,0,0" Width="135" Click="buttonSaveChange_Click" BorderBrush="#FF666666" Background="Black" Foreground="White"/>
+            <Button x:Name="buttonRemuveEmployee" Content="Удалить сотрудника" Height="25" Margin="200,5,16,0" Click="buttonRemuveEmployee_Click" BorderBrush="#FF666666" Background="Black" Foreground="White"/>
+        </StackPanel>
+        <Button x:Name="buttonHome" Content="Главная" Margin="10,10,375,374" Click="button_Click" Background="#FF8B8B8B" Foreground="Black" />
+        <Button x:Name="buttonMenu" Content="Меню" Margin="70,10,325,374" Click="button_Click" Background="#FF8B8B8B" Foreground="Black" />
+        <Button x:Name="buttonProducts" Content="Продукты" Margin="120,10,255,374" Click="button_Click" Background="#FF8B8B8B" Foreground="Black" />
+        <Button x:Name="buttonOrder" Content="Заказ" Margin="190,10,200,374" Click="button_Click" Foreground="Black" Background="#FF8B8B8B" />
+        <Button x:Name="buttonHireAnEmployee" Content="Нанять сотрудника" Margin="245,10,80,374" Click="buttonHireAnEmployee_Click" BorderBrush="#FF666666" Background="Black" Foreground="White" />
+        <Button x:Name="buttonUpdate" Content="Обновить" Margin="365,10,10,374" Click="buttonUpdate_Click" Background="Black" BorderBrush="#FF666666" Foreground="White" />
+    </Grid>
+</Window>

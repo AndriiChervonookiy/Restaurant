@@ -1,0 +1,15 @@
+﻿<Window x:Class="Restaurant.Order"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Restaurant"
+        mc:Ignorable="d"
+        Title="Order" Height="450" Width="800">
+    <Grid Background="#FF232323">
+        <Button x:Name="buttonHome" Content="Главная" Margin="10,11,567,373" Click="button_Click" />
+        <Button x:Name="buttonMainWindow" Content="Сотрудники" Margin="230,10,466,374" Click="button_Click" />
+        <Button x:Name="buttonMenu" Content="Меню" Margin="331,11,326,373" Click="button_Click" />
+        <Button x:Name="buttonProducts" Content="Продукты" Margin="471,10,133,374" Click="button_Click" />
+    </Grid>
+</Window>

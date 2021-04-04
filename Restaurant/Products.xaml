@@ -1,0 +1,36 @@
+﻿<Window x:Class="Restaurant.Products"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Restaurant"
+        mc:Ignorable="d"
+        Title="Products" Height="450" Width="800">
+    <Grid Background="#FF232323">
+        <ListBox x:Name="listBoxProducts" Grid.Column="0" ItemsSource="{Binding Products}" SelectedItem="{Binding SelectedProducts}" Margin="10,51,417,10" OpacityMask="Black" Background="#FF232323" BorderBrush="#FF232323" Foreground="White">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Path=Title}"></TextBlock>
+                        <TextBlock Text="{Binding Path=Count}"></TextBlock>
+                        <TextBlock Text="{Binding Path=Price}"></TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <StackPanel DataContext="{Binding SelectedProduct}" Background="#FF232323" Margin="380,0,10,0">
+            <Label x:Name="labelId" Visibility="Hidden" Content="{Binding Id, UpdateSourceTrigger=PropertyChanged}"></Label>
+            <TextBlock FontSize="20" Text="Продукт" Foreground="White" Margin="0,0,0,0"/>
+            <TextBlock FontSize="17" Text="Название" Foreground="White" Margin="0,0,0,0"></TextBlock>
+            <TextBox x:Name="textBoxTitle" Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}" SelectionBrush="#FF035FFF" Margin="0,0,0,0"></TextBox>
+            <TextBlock FontSize="17" Text="Количество" Foreground="White" Margin="0,0,0,0"></TextBlock>
+            <TextBox x:Name="textBoxCount" Text="{Binding Count, UpdateSourceTrigger=PropertyChanged}" SelectionBrush="#FF035FFF" Margin="0,0,0,0"></TextBox>
+            <TextBlock FontSize="17" Text="Стоимость" Foreground="White" Margin="0,0,0,0"></TextBlock>
+            <TextBox x:Name="textBoxPrice" Text="{Binding Price, UpdateSourceTrigger=PropertyChanged}" SelectionBrush="#FF035FFF" Margin="0,0,0,0"/>
+        </StackPanel>
+        <Button x:Name="buttonHome" Content="Главная" Margin="10,10,692,373" Click="button_Click" Background="#FF8B8B8B" />
+        <Button x:Name="buttonMainWindow" Content="Сотрудники" Margin="105,10,592,373" Click="button_Click" Background="#FF8B8B8B" />
+        <Button x:Name="buttonMenu" Content="Меню" Margin="205,10,502,373" Click="button_Click" Background="#FF8B8B8B" />
+        <Button x:Name="buttonOrder" Content="Заказ" Margin="295,10,417,373" Click="button_Click" Background="#FF8B8B8B" />
+    </Grid>
+</Window>
