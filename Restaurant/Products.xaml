@@ -5,9 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Restaurant"
         mc:Ignorable="d"
-        Title="Products" Height="450" Width="800">
+        Title="Products" Height="450" Width="800" WindowStyle="ToolWindow" MinWidth="800" MinHeight="450" MaxWidth="800" MaxHeight="450" Background="Black">
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14"></Setter>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="16"></Setter>
+        </Style>
+    </Window.Resources>
     <Grid Background="#FF232323">
-        <ListBox x:Name="listBoxProducts" Grid.Column="0" ItemsSource="{Binding Products}" SelectedItem="{Binding SelectedProducts}" Margin="10,51,417,10" OpacityMask="Black" Background="#FF232323" BorderBrush="#FF232323" Foreground="White">
+        <ListBox x:Name="listBoxProducts" ItemsSource="{Binding Products}" SelectedItem="{Binding SelectedProducts}" Margin="10,51,417,10" OpacityMask="Black" Background="#FF232323" BorderBrush="#FF232323" Foreground="White">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
@@ -19,10 +27,10 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <StackPanel DataContext="{Binding SelectedProduct}" Background="#FF232323" Margin="380,0,10,0">
-            <Label x:Name="labelId" Visibility="Hidden" Content="{Binding Id, UpdateSourceTrigger=PropertyChanged}"></Label>
+            <Label x:Name="labelId" Content="{Binding Id, UpdateSourceTrigger=PropertyChanged}" Foreground="White"></Label>
             <TextBlock FontSize="20" Text="Продукт" Foreground="White" Margin="0,0,0,0"/>
             <TextBlock FontSize="17" Text="Название" Foreground="White" Margin="0,0,0,0"></TextBlock>
-            <TextBox x:Name="textBoxTitle" Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}" SelectionBrush="#FF035FFF" Margin="0,0,0,0"></TextBox>
+            <TextBox x:Name="textBoxTitle" Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}" SelectionBrush="#FF035FFF" Margin="0,0,0,0" SpellCheck.IsEnabled="True"></TextBox>
             <TextBlock FontSize="17" Text="Количество" Foreground="White" Margin="0,0,0,0"></TextBlock>
             <TextBox x:Name="textBoxCount" Text="{Binding Count, UpdateSourceTrigger=PropertyChanged}" SelectionBrush="#FF035FFF" Margin="0,0,0,0"></TextBox>
             <TextBlock FontSize="17" Text="Стоимость" Foreground="White" Margin="0,0,0,0"></TextBlock>

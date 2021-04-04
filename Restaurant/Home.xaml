@@ -7,9 +7,10 @@
         mc:Ignorable="d"
         Title="Home" Height="450" Width="800">
     <Grid Background="#FF232323">
-        <Button x:Name="buttonMainWindow" Content="Сотрудники" Margin="10,10,585,374" Click="button_Click" />
-        <Button x:Name="buttonMenu" Content="Меню" Margin="212,10,433,374" Click="button_Click" />
-        <Button x:Name="buttonProducts" Content="Продукты" Margin="364,12,290,372" Click="button_Click" />
-        <Button x:Name="buttonOrder" Content="Заказ" Margin="507,12,110,372" Click="button_Click" />
+        <TextBlock Text="{Binding Path=Budget}" Margin="135,10,401,374" Foreground="White"></TextBlock>
+        <Button x:Name="buttonMainWindow" Content="Сотрудники" Margin="10,10,662,374" Click="button_Click" />
+        <Button x:Name="buttonMenu" Content="Меню" Margin="10,50,662,334" Click="button_Click" />
+        <Button x:Name="buttonProducts" Content="Продукты" Margin="10,90,662,294" Click="button_Click" />
+        <Button x:Name="buttonOrder" Content="Заказ" Margin="10,130,662,254" Click="button_Click" />
     </Grid>
 </Window>

@@ -23,6 +23,7 @@ namespace Restaurant
         public Home()
         {
             InitializeComponent();
+            DataContext = new ApplicationViewModel("budget");
         }
         public void button_Click(object sender, RoutedEventArgs e)
         {

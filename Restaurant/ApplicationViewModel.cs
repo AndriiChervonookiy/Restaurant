@@ -13,6 +13,7 @@ namespace Restaurant
 
         private Staff selectedStaff;
         private Product selectedProduct;
+        private BudgetClass budgetClass;
         public ObservableCollection<Staff> Staffs { get; set; }
         public ObservableCollection<Product> Products { get; set; }
         public Staff SelectedStaff
@@ -35,7 +36,7 @@ namespace Restaurant
         }
         public ApplicationViewModel(string table)
         {
-            if(table == "staff")
+            if (table == "staff")
             {
                 Staffs = new ObservableCollection<Staff>() { };
                 using (SqlConnection conn = new SqlConnection(connstr))
@@ -63,7 +64,7 @@ namespace Restaurant
                     }
                 }
             }
-            else if(table == "products")
+            else if (table == "products")
             {
                 Products = new ObservableCollection<Product>() { };
                 using (SqlConnection conn = new SqlConnection(connstr))
@@ -91,11 +92,30 @@ namespace Restaurant
                     }
                 }
             }
-            
+            else if (table == "budget")
+            {
+                using (SqlConnection conn = new SqlConnection(connstr))
+                {
+                    conn.Open();
+                    string TBudget;
+
+                    using (SqlCommand command = new SqlCommand("SELECT * FROM [DB_A70B8E_Rest].[dbo].[Budget];", conn))
+                    {
+                        SqlDataReader reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            for (int i = 0; i < 1; i++)
+                            {
+                                TBudget = reader.GetValue(0).ToString();
+                                budgetClass = new BudgetClass() { Budget=float.Parse(TBudget) };
+                                MessageBox.Show(budgetClass.Budget.ToString());
+                            }
+                        }
+                    }
+                }
+            }
         }
-
         public event PropertyChangedEventHandler PropertyChanged;
-
         public void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
